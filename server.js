@@ -2,6 +2,7 @@ const express = require('express');
 const PORT = process.env.PORT || 5000;
 const app = express();
 const { dbConnect } = require('./src/config/db');
+app.set('view-engine', 'ejs')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,3 +15,6 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
   res.json('Welcome to my brand server').status(200);
 });
+app.post('/register', (req, res) => {
+res.json('/register.ejs')
+})
